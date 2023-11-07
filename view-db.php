@@ -25,12 +25,11 @@ $conn = connect();
 
     <table>
         <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Age</th>
             <th>Type</th>
-            <th>#</th>
-            <th>#</th>
+            <th></th>
+            <th></th>
         </tr>
 
         <?php
@@ -43,7 +42,6 @@ $conn = connect();
         while ($row = $result->fetch_array(MYSQLI_ASSOC)): ?>
             <!-- Puts the data into the table  -->
             <tr>
-            <td><?= $row["id"] ?></td>
             <td><?= $row["name"] ?></td>
             <td><?= $row["age"] ?></td>
             <td><?= $row["type"] ?></td>

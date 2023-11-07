@@ -9,10 +9,25 @@
     <title>Mid-Cornwall Vet Centre</title>
 </head>
 <body>
-    <ul>
+    <h1 class="title">Mid-Cornwall Vet Centre</h1>
+    <div class="row justify-content-evenly padding">
+    <div class="col-4">
+        <button type="button" class="btn btn-primary">
+            <a class="dark-button" href="add-new.php">Add a new pet</a>            
+        </button>
+        
+    </div>
+    <div class="col-4">
+        <button type="button" class="btn btn-primary">
+            <a class="dark-button" href="view-db.php">View/Edit pets</a>
+        </button>
+        <!-- <a href="view-db.php">View/Edit pets</a> -->
+    </div>
+  </div>
+    <!-- <ul>
         <li><a href="add-new.php">Add a new pet to the database</a></li>
         <li><a href="view-db.php">View/Edit pets</a></li>
-    </ul>
+    </ul> -->
 
     <?php if(isset($_GET["msg"]) && $_GET["msg"]=="add-success"): ?>
         <div class="success">
