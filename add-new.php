@@ -13,5 +13,8 @@
         <p>Enter pet type: <input type="text" name="type" /></p>
         <p><input type="submit" value="Add Pet Details" /></p>
     </form>
+
+    <a href="index.php">Home</a>
+
 </body>
 </html>

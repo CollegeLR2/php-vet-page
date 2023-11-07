@@ -17,12 +17,12 @@ th, td {
 }
 
 tr {
-    border-bottom: 1px solid #e729fc;
+    border-bottom: 1px solid #29fc42;
 }
 
 /* Selects every even table row  */
 tr:nth-of-type(even) {
-    background-color: #efa7f9;
+    background-color: #a7f9b9;
 }
 
 form {
@@ -35,8 +35,16 @@ form {
 }
 
 input {
-    background-color: #efa7f9;
-    border-bottom: 1px solid #e729fc;
+    background-color: #a7f9b9;
+    border-bottom: 1px solid #29fc42;
+}
+
+.dark-button {
+    color: #ffffff;
+}
+
+.light-button {
+    color: #000000;
 }
 
 .success {
