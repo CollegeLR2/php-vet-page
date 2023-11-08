@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- form to create details -->
     <form action="add-action.php" method="post">
         <p>Enter pet name: <input type="text" name="name" /></p>
         <p>Enter pet age: <input type="text" name="age" /></p>
@@ -17,6 +18,7 @@
         <button type="submit" class="btn btn-primary">Add Pet Details</button>
     </form>
 
+    <!-- return to index.php -->
     <button type="button" class="btn btn-secondary">
         <a class="dark-button" href="index.php">Home</a>
     </button>

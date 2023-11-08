@@ -38,11 +38,6 @@ form {
     min-width: 400px;
 }
 
-/* input {
-    background-color: #a7f9b9;
-    border-bottom: 1px solid #29fc42;
-} */
-
 .dark-button {
     color: #ffffff;
 }
@@ -69,4 +64,22 @@ form {
 .padding {
     padding-top: 5em;
     text-align: center;
+}
+
+.navigation-bar {
+    background-color: #333;
+    padding: 1em;
+    font-size: 16px;
+}
+
+.navigation-bar a {
+    display: inline-block;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navigation-bar a:hover {
+    background-color: #000000
 }

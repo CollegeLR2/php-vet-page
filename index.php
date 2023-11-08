@@ -10,37 +10,47 @@
 </head>
 <body>
     <h1 class="title">Mid-Cornwall Vet Centre</h1>
+    <!-- creates layout for the buttons -->
     <div class="row justify-content-evenly padding">
+        <!-- button to add a new pet -->
     <div class="col-4">
         <button type="button" class="btn btn-primary">
             <a class="dark-button" href="add-new.php">Add a new pet</a>            
         </button>
-        
     </div>
+
+    <!-- button to view the database -->
     <div class="col-4">
         <button type="button" class="btn btn-primary">
             <a class="dark-button" href="view-db.php">View/Edit pets</a>
         </button>
-        <!-- <a href="view-db.php">View/Edit pets</a> -->
     </div>
-  </div>
-    <!-- <ul>
-        <li><a href="add-new.php">Add a new pet to the database</a></li>
-        <li><a href="view-db.php">View/Edit pets</a></li>
-    </ul> -->
 
+    <!-- button to search the database -->
+    <div class="col-4">
+        <button type="button" class="btn btn-primary">
+            <a class="dark-button" href="search.php">Search the database</a>
+        </button>
+    </div>
+
+  </div>
+
+    <!-- messages for user to know what has happened -->
+    <!-- shown after adding to db -->
     <?php if(isset($_GET["msg"]) && $_GET["msg"]=="add-success"): ?>
         <div class="success">
             Added <?=$_GET["id"]?> to database
         </div>
     <?php endif ?>
 
+    <!-- shown after editing a pet -->
     <?php if(isset($_GET["msg"]) && $_GET["msg"]=="edit-success"): ?>
         <div class="success">
             Successful edit
         </div>
     <?php endif ?>
 
+    <!-- shown after deleting a pet from the db -->
     <?php if(isset($_GET["msg"]) && $_GET["msg"]=="delete-success"): ?>
         <div class="success">
             Successful deletion
