@@ -22,22 +22,20 @@ $conn = connect();
 
     <!--  Create a table with a top row for the name of the data -->
 
-    <?php // Selects all the data (*) from the pets DB 
+    <?php 
+        // Selects all the data (*) from the pets table
         $sql = "SELECT * FROM pets";
         // Queries the sql statement against the connected database 
         $result = $conn->query($sql); 
 
         include "library/show-db.php";
 
-    
-
         // "Frees the memory associated with the result"
         $result->free_result();
 
         // Closes the connection to the database
         $conn->close();
-
-        ?>
+    ?>
 
         <button type="button" class="btn btn-secondary">
             <a class="dark-button" href="index.php">Home</a>

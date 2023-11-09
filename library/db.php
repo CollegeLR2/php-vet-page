@@ -40,11 +40,15 @@ function edit_pet($id, $conn) {
     $stmt->execute();
 }
 
+// finds a pet from the database 
 function find_pet($search, $conn) {
     $query = "SELECT * FROM pets WHERE name LIKE ?";
     $stmt = $conn->prepare($query);
 
-    $search = "{$_POST['search']}%";
+    // the % signs are used for a wider search, for all data 
+    // that contains the search query, either before or after 
+    // the full name
+    $search = "%{$_POST['search']}%";
     $stmt->bind_param("s", $search);
     $stmt->execute();
     return $stmt->get_result();
