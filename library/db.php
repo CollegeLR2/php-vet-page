@@ -31,6 +31,14 @@ function add_pet($conn) {
     $stmt->execute();
 }
 
+// adds an owner to the db
+function add_owner($conn) {
+    $query = "INSERT INTO owners (owner_name, email, phone) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("sss", $_POST["owner_name"], $_POST["email"], $_POST["phone"]);
+    $stmt->execute();
+}
+
 // changes the values of the data in the db
 function edit_pet($id, $conn) {
     $query = "UPDATE pets SET name=?, age=?, type=? WHERE id=?";

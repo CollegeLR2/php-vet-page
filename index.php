@@ -13,21 +13,28 @@
     <!-- creates layout for the buttons -->
     <div class="row justify-content-evenly padding">
         <!-- button to add a new pet -->
-    <div class="col-4">
+    <div class="col-3">
         <button type="button" class="btn btn-primary">
             <a class="dark-button" href="add-new.php">Add a new pet</a>            
         </button>
     </div>
 
+    <!-- button to search the database -->
+    <div class="col-3">
+        <button type="button" class="btn btn-primary">
+            <a class="dark-button" href="add-owner.php">Add a new owner</a>
+        </button>
+    </div>
+
     <!-- button to view the database -->
-    <div class="col-4">
+    <div class="col-3">
         <button type="button" class="btn btn-primary">
             <a class="dark-button" href="view-db.php">View/Edit pets</a>
         </button>
     </div>
 
     <!-- button to search the database -->
-    <div class="col-4">
+    <div class="col-3">
         <button type="button" class="btn btn-primary">
             <a class="dark-button" href="search.php">Search the database</a>
         </button>

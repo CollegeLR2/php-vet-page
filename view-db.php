@@ -23,8 +23,9 @@ $conn = connect();
     <!--  Create a table with a top row for the name of the data -->
 
     <?php 
-        // Selects all the data (*) from the pets table
-        $sql = "SELECT * FROM pets";
+        // Selects all the data (*) from the pets and owners tables, where 
+        // the owner_ids are the same
+        $sql = "SELECT * FROM pets, owners WHERE pets.owner_id = owners.owner_id";
         // Queries the sql statement against the connected database 
         $result = $conn->query($sql); 
 
