@@ -9,9 +9,10 @@
     <title>Mid-Cornwall Vet Centre</title>
 </head>
 <body>
-    <h1 class="title">Mid-Cornwall Vet Centre</h1>
-    <!-- creates layout for the buttons -->
-    <div class="row justify-content-evenly padding">
+<h1 class="title">Mid-Cornwall Vet Centre</h1>
+
+<!-- creates layout for the buttons -->
+<div class="row justify-content-evenly padding">
 
     <!-- button to add a new pet -->
     <div class="col-2">
@@ -48,29 +49,33 @@
         </button>
     </div>
 
-  </div>
+</div>
 
-    <!-- messages for user to know what has happened -->
-    <!-- shown after adding to db -->
-    <?php if(isset($_GET["msg"]) && $_GET["msg"]=="add-success"): ?>
-        <div class="success">
-            Added <?=$_GET["id"]?> to database
-        </div>
-    <?php endif ?>
+<br />
 
-    <!-- shown after editing a pet -->
-    <?php if(isset($_GET["msg"]) && $_GET["msg"]=="edit-success"): ?>
-        <div class="success">
-            Successful edit
-        </div>
-    <?php endif ?>
+<?php include "profile.php"; ?>
 
-    <!-- shown after deleting a pet from the db -->
-    <?php if(isset($_GET["msg"]) && $_GET["msg"]=="delete-success"): ?>
-        <div class="success">
-            Successful deletion
-        </div>
-    <?php endif ?>
+<!-- messages for user to know what has happened -->
+<!-- shown after adding to db -->
+<?php if(isset($_GET["msg"]) && $_GET["msg"]=="add-success"): ?>
+    <div class="success">
+        Added <?=$_GET["id"]?> to database
+    </div>
+<?php endif ?>
+
+<!-- shown after editing a pet -->
+<?php if(isset($_GET["msg"]) && $_GET["msg"]=="edit-success"): ?>
+    <div class="success">
+        Successful edit
+    </div>
+<?php endif ?>
+
+<!-- shown after deleting a pet from the db -->
+<?php if(isset($_GET["msg"]) && $_GET["msg"]=="delete-success"): ?>
+    <div class="success">
+        Successful deletion
+    </div>
+<?php endif ?>
 
 </body>
 </html>

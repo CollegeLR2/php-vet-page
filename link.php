@@ -39,28 +39,8 @@ $result = $conn->query($sql);
         </table>
     </div>
 
-<?php
-$sql = "SELECT * FROM owners";
-$result = $conn->query($sql); 
-?>
+<?php include "owners.php" ?>
 
-    <div class="col-6">
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-            </tr>
-            <?php while ($row = $result->fetch_array(MYSQLI_ASSOC)): ?>
-                <!-- Puts the data into the table  -->
-                <tr>
-                    <td><?= $row["owner_name"] ?></td>
-                    <td><?= $row["email"] ?></td>
-                    <td><?= $row["phone"] ?></td>
-                </tr>
-            <?php endwhile; ?>
-        </table>
-    </div>
 </div>
 
 <button type="button" class="btn btn-secondary">

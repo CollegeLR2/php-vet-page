@@ -25,9 +25,9 @@ function delete_pet($id, $conn) {
 
 // adds a pet to the db
 function add_pet($conn) {
-    $query = "INSERT INTO pets (name, age, type) VALUES (?, ?, ?)";
+    $query = "INSERT INTO pets (name, age, type, owner_id) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sss", $_POST["name"], $_POST["age"], $_POST["type"]);
+    $stmt->bind_param("sssi", $_POST["name"], $_POST["age"], $_POST["type"], $_POST["owner_id"]);
     $stmt->execute();
 }
 
@@ -41,10 +41,10 @@ function add_owner($conn) {
 
 // changes the values of the data in the db
 function edit_pet($id, $conn) {
-    $query = "UPDATE pets SET name=?, age=?, type=? WHERE id=?";
+    $query = "UPDATE pets SET name=?, age=?, type=?, owner_id=? WHERE id=?";
     // Prepares the query to prevent SQL injections 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssss", $_POST["name"], $_POST["age"], $_POST["type"], $_POST["id"]);
+    $stmt->bind_param("sssis", $_POST["name"], $_POST["age"], $_POST["type"], $_POST["owner_id"], $_POST["id"]);
     $stmt->execute();
 }
 
@@ -56,6 +56,15 @@ function find_pet($search, $conn) {
     // the % signs are used for a wider search, for all data 
     // that contains the search query, either before or after 
     // the full name
+    $search = "%{$_POST['search']}%";
+    $stmt->bind_param("s", $search);
+    $stmt->execute();
+    return $stmt->get_result();
+}
+
+function find_owner($search, $conn) {
+    $query = "SELECT * FROM owners WHERE name LIKE ?";
+    $stmt = $conn->prepare($query);
     $search = "%{$_POST['search']}%";
     $stmt->bind_param("s", $search);
     $stmt->execute();

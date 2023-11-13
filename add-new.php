@@ -16,6 +16,7 @@
         <p>Enter pet name: <input type="text" name="name" /></p>
         <p>Enter pet age: <input type="text" name="age" /></p>
         <p>Enter pet type: <input type="text" name="type" /></p>
+        <p>Enter owner ID: <input type="number" name="owner_id" /></p>
         <button type="submit" class="btn btn-primary">Add Pet Details</button>
     </form>
 
@@ -23,6 +24,12 @@
     <button type="button" class="btn btn-secondary">
         <a class="dark-button" href="index.php">Home</a>
     </button>
+
+    <?php 
+    include "library/db.php";
+    $conn = connect();
+    include "owners.php";
+    ?>
 
 </body>
 </html>

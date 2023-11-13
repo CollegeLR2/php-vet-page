@@ -40,10 +40,18 @@
             <input type="text" name="type" value="<?=$pet["type"] ?>">
         </p>
         <p>
+            Owner ID:
+            <input type="number" name="owner_id" value="<?=$pet["owner_id"] ?>">
+        </p>
+        <p>
             <input type="submit" value="Update">
         </p>
         <input type="hidden" name="id" value="<?= $pet["id"] ?>">
     </form>
+
+    <?php
+    include "owners.php";
+    ?>
 
 </body>
 </html>
