@@ -24,24 +24,29 @@ $conn = connect();
 
         <?php
         $owner = $_GET["owner_name"];
+        // Checks if the owner name input is in the db
         $result = $conn->execute_query("SELECT owner_id FROM owners WHERE owner_name = ? LIMIT 1", [$owner]);
 
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
             $ownerId = $row["owner_id"];
             
+            // Finds the names of the pets that share an owner_id with the owner
             $petResult = $conn->execute_query("SELECT name FROM pets WHERE owner_id = ?", [$ownerId]);
             
             if ($petResult->num_rows > 0) {
                 echo "Pets belonging to you: <br />";
-                
+
+                // Loops through the pets to display all of the ones owned by one owner
                 while ($petRow = $petResult->fetch_assoc()) {
                     $petName = $petRow["name"];
-                    echo $petName . "<br>";
+                    echo $petName . "<br />";
                 }
+            // if there are 0 rows for the pets under the owner
             } else {
                 echo "No pets found.";
             }
+        // if the input does not match an owner_name in the owners table
         } else {
             echo "That name isn't in the database yet. Make sure you entered it correctly and try again";
         }

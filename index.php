@@ -38,7 +38,7 @@
     <!-- button to link an owner and pet -->
     <div class="col-2">
         <button type="button" class="btn btn-primary">
-            <a class="dark-button" href="link.php">Link an owner/pet</a>
+            <a class="dark-button" href="link.php">View both tables</a>
         </button>
     </div>
 

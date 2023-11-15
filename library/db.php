@@ -62,13 +62,4 @@ function find_pet($search, $conn) {
     return $stmt->get_result();
 }
 
-function find_owner($search, $conn) {
-    $query = "SELECT * FROM owners WHERE name LIKE ?";
-    $stmt = $conn->prepare($query);
-    $search = "%{$_POST['search']}%";
-    $stmt->bind_param("s", $search);
-    $stmt->execute();
-    return $stmt->get_result();
-}
-
 ?>

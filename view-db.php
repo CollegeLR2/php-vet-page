@@ -20,7 +20,9 @@ $conn = connect();
 <body>
     <h1>Registered Pets</h1>
 
-    <!--  Create a table with a top row for the name of the data -->
+    <button type="button" class="btn btn-secondary">
+        <a class="dark-button" href="index.php">Home</a>
+    </button>
 
     <?php 
         // Selects all the data (*) from the pets and owners tables, where 
@@ -29,6 +31,7 @@ $conn = connect();
         // Queries the sql statement against the connected database 
         $result = $conn->query($sql); 
 
+        // Create a table with a top row for the name of the data 
         include "library/show-db.php";
 
         // "Frees the memory associated with the result"
@@ -37,10 +40,6 @@ $conn = connect();
         // Closes the connection to the database
         $conn->close();
     ?>
-
-        <button type="button" class="btn btn-secondary">
-            <a class="dark-button" href="index.php">Home</a>
-        </button>
 
 </body>
 </html>
