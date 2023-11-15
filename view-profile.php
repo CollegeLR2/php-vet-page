@@ -18,17 +18,32 @@ $conn = connect();
 <body>
     <div class="row justify-content-evenly padding">
         <h2>Your Profile</h2>
+        <!-- Prints the owner's name input in the last page
+             whether or not it is in the db -->
         <h3><?= $_GET["owner_name"] ?></h3>
 
         <?php
         $owner = $_GET["owner_name"];
-        $result = $conn->execute_query("SELECT owner_id FROM owners 
-                                        WHERE owner_name = ? LIMIT 1", [$owner]);
-        if($result->num_rows == 1) {
-            echo "Found you in the database. Congrats!!!!!!";
+        $result = $conn->execute_query("SELECT owner_id FROM owners WHERE owner_name = ? LIMIT 1", [$owner]);
+
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            $ownerId = $row["owner_id"];
+            
+            $petResult = $conn->execute_query("SELECT name FROM pets WHERE owner_id = ?", [$ownerId]);
+            
+            if ($petResult->num_rows > 0) {
+                echo "Pets belonging to you: <br />";
+                
+                while ($petRow = $petResult->fetch_assoc()) {
+                    $petName = $petRow["name"];
+                    echo $petName . "<br>";
+                }
+            } else {
+                echo "No pets found.";
+            }
         } else {
-            echo "That name isn't in the database yet. 
-            Make sure you entered it correctly and try again";
+            echo "That name isn't in the database yet. Make sure you entered it correctly and try again";
         }
         ?>
 
