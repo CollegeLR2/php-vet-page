@@ -44,10 +44,7 @@
             <input type="text" name="type" value="<?=$pet["type"] ?>">
         </p>
 
-        <p>
-            Enter owner name:
-            <input type="number" name="owner_id" value="<?=$pet["owner_id"] ?>">
-        </p>
+        <?php include "owner-dropdown.php" ?>
 
         <p>
             <input type="submit" value="Update">
