@@ -1,5 +1,6 @@
 <table>
     <tr>
+        <th>Photo</th>
         <th>Name</th>
         <th>Age</th>
         <th>Type</th>
@@ -10,6 +11,7 @@
     <?php while ($row = $result->fetch_array(MYSQLI_ASSOC)): ?>
         <!-- Puts the data into the table  -->
         <tr>
+        <td><img src="<?= $row["pet_photo"] ?>"></td>
         <td><?= $row["name"] ?></td>
         <td><?= $row["age"] ?></td>
         <td><?= $row["type"] ?></td>

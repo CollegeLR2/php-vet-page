@@ -25,15 +25,15 @@ $conn = connect();
         <?php
         $owner = $_GET["owner_name"];
         // Checks if the owner name input is in the db
-        $result = $conn->execute_query("SELECT owner_id FROM owners WHERE owner_name = ? LIMIT 1", [$owner]);
+        $result = $conn->execute_query("SELECT owner_id FROM newowners WHERE owner_name = ? LIMIT 1", [$owner]);
 
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
             $ownerId = $row["owner_id"];
             
             // Finds the names of the pets that share an owner_id with the owner
-            $petResult = $conn->execute_query("SELECT name FROM pets WHERE owner_id = ?", [$ownerId]);
-            
+            $petResult = $conn->execute_query("SELECT name FROM newpets WHERE owner_id = ?", [$ownerId]);
+
             if ($petResult->num_rows > 0) {
                 echo "Pets belonging to you: <br />";
 

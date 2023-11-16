@@ -23,7 +23,7 @@
                 <?php
                 include "library/db.php";
                 $conn = connect();
-                $sql = "SELECT * FROM owners";
+                $sql = "SELECT * FROM newowners";
                 $result = $conn->query($sql); 
                 ?>
                 

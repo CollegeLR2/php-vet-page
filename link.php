@@ -14,11 +14,15 @@
 include "library/db.php";
 $conn = connect();
 
-$sql = "SELECT * FROM pets";
+$sql = "SELECT * FROM newpets";
 $result = $conn->query($sql); 
 ?>
 
 <h1>Pets and Owners</h1>
+
+<button type="button" class="btn btn-secondary">
+    <a class="dark-button" href="index.php">Home</a>
+</button>
 
 <div class="row justify-content-evenly">
     <div class="col-6">
@@ -42,10 +46,6 @@ $result = $conn->query($sql);
 <?php include "owners.php" ?>
 
 </div>
-
-<button type="button" class="btn btn-secondary">
-    <a class="dark-button" href="index.php">Home</a>
-</button>
 
 </body>
 </html>
