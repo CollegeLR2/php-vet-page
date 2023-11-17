@@ -4,7 +4,7 @@
 
     $conn = connect();
 
-    $sql = "SELECT * FROM pets WHERE id=?";
+    $sql = "SELECT * FROM newpets WHERE id=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $_GET["id"]);
     $row = $stmt->execute();
@@ -28,6 +28,10 @@
     <h1>Edit <?= $pet["name"] ?></h1>
     <form action="edit-action.php" method="post">
         <p>
+            Photo (link):
+            <input type="text" name="pet_photo" value="<?=$pet["pet_photo"] ?>">
+        </p>
+        <p>
             Name:
             <input type="text" name="name" value="<?=$pet["name"] ?>">
         </p>
@@ -39,6 +43,9 @@
             Type:
             <input type="text" name="type" value="<?=$pet["type"] ?>">
         </p>
+
+        <?php include "owner-dropdown.php" ?>
+
         <p>
             <input type="submit" value="Update">
         </p>

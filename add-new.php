@@ -16,6 +16,13 @@
         <p>Enter pet name: <input type="text" name="name" /></p>
         <p>Enter pet age: <input type="text" name="age" /></p>
         <p>Enter pet type: <input type="text" name="type" /></p>
+
+        <?php
+        include "library/db.php";
+        $conn = connect();        
+        include "owner-dropdown.php"; 
+        ?>
+
         <button type="submit" class="btn btn-primary">Add Pet Details</button>
     </form>
 
