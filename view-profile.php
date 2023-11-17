@@ -17,41 +17,44 @@ $conn = connect();
 </head>
 <body>
     <div class="row justify-content-evenly padding">
-        <h2>Your Profile</h2>
-        <!-- Prints the owner's name input in the last page
-             whether or not it is in the db -->
-        <h3><?= $_GET["owner_name"] ?></h3>
+        <div class="col-4">
+            <h2>Your Profile</h2>
+            <!-- Prints the owner's name input in the last page
+                whether or not it is in the db -->
+            <h3><?= $_GET["owner_name"] ?></h3>
 
-        <?php
-        $owner = $_GET["owner_name"];
-        // Checks if the owner name input is in the db
-        $result = $conn->execute_query("SELECT owner_id FROM newowners WHERE owner_name = ? LIMIT 1", [$owner]);
+            <?php
+            $owner = $_GET["owner_name"];
+            // Checks if the owner name input is in the db
+            $result = $conn->execute_query("SELECT owner_id, photo FROM newowners WHERE owner_name = ? LIMIT 1", [$owner]);
 
-        if ($result->num_rows == 1) {
-            $row = $result->fetch_assoc();
-            $ownerId = $row["owner_id"];
-            
-            // Finds the names of the pets that share an owner_id with the owner
-            $petResult = $conn->execute_query("SELECT name FROM newpets WHERE owner_id = ?", [$ownerId]);
+            if ($result->num_rows == 1) {
+                $row = $result->fetch_assoc();
+                $ownerId = $row["owner_id"];
 
-            if ($petResult->num_rows > 0) {
-                echo "Pets belonging to you: <br />";
+                echo "<img src='" . $row["photo"] . "' height='100'>";
+                
+                // Finds the names of the pets that share an owner_id with the owner
+                $petResult = $conn->execute_query("SELECT name FROM newpets WHERE owner_id = ?", [$ownerId]);
 
-                // Loops through the pets to display all of the ones owned by one owner
-                while ($petRow = $petResult->fetch_assoc()) {
-                    $petName = $petRow["name"];
-                    echo $petName . "<br />";
+                if ($petResult->num_rows > 0) {
+                    echo "<br /> Pets belonging to you: <br />";
+
+                    // Loops through the pets to display all of the ones owned by one owner
+                    while ($petRow = $petResult->fetch_assoc()) {
+                        $petName = $petRow["name"];
+                        echo $petName . "<br />";
+                    }
+                // if there are 0 rows for the pets under the owner
+                } else {
+                    echo "No pets found.";
                 }
-            // if there are 0 rows for the pets under the owner
+            // if the input does not match an owner_name in the owners table
             } else {
-                echo "No pets found.";
+                echo "That name isn't in the database yet. Make sure you entered it correctly and try again";
             }
-        // if the input does not match an owner_name in the owners table
-        } else {
-            echo "That name isn't in the database yet. Make sure you entered it correctly and try again";
-        }
-        ?>
-
+            ?>
+        </div>
     </div>
 
     <div class="row justify-content-evenly padding">

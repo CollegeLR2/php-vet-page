@@ -20,7 +20,7 @@
         <?php
         include "library/db.php";
         $conn = connect();        
-        include "owner-dropdown.php" 
+        include "owner-dropdown.php"; 
         ?>
 
         <button type="submit" class="btn btn-primary">Add Pet Details</button>
