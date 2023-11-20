@@ -4,7 +4,6 @@
         <th>Name</th>
         <th>Age</th>
         <th>Type</th>
-        <th>Owner</th>
         <th></th>
         <th></th>
     </tr>
@@ -15,7 +14,6 @@
         <td><?= $row["name"] ?></td>
         <td><?= $row["age"] ?></td>
         <td><?= $row["type"] ?></td>
-        <td><?= $row["owner_name"] ?></td>
         <td><button type="button" class="btn btn-info">
             <a class="light-button" href="edit.php?id=<?= $row["id"] ?>">Edit</a>
         </button></td>

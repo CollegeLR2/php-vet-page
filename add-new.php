@@ -13,6 +13,7 @@
     <h1>Add a new pet</h1>
     <!-- form to create details -->
     <form action="add-action.php" method="post">
+        <p>Enter pet photo (link): <input type="url" name="pet_photo" /></p>
         <p>Enter pet name: <input type="text" name="name" /></p>
         <p>Enter pet age: <input type="text" name="age" /></p>
         <p>Enter pet type: <input type="text" name="type" /></p>

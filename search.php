@@ -35,7 +35,7 @@ if (isset($_POST["search"])) {
 
     <?php if ($show_results) {
 
-        include "library/show-db.php";
+        include "library/show-db-ownerless.php";
 
     } ?>
 

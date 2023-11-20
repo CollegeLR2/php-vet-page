@@ -25,17 +25,17 @@ function delete_pet($id, $conn) {
 
 // adds a pet to the db
 function add_pet($conn) {
-    $query = "INSERT INTO newpets (name, age, type, owner_id) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO newpets (name, age, type, owner_id, pet_photo) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sssi", $_POST["name"], $_POST["age"], $_POST["type"], $_POST["owner_id"]);
+    $stmt->bind_param("sssis", $_POST["name"], $_POST["age"], $_POST["type"], $_POST["owner_id"], $_POST["pet_photo"]);
     $stmt->execute();
 }
 
 // adds an owner to the db
 function add_owner($conn) {
-    $query = "INSERT INTO newowners (owner_name, email, phone) VALUES (?, ?, ?)";
+    $query = "INSERT INTO newowners (owner_name, email, phone, photo) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sss", $_POST["owner_name"], $_POST["email"], $_POST["phone"]);
+    $stmt->bind_param("ssss", $_POST["owner_name"], $_POST["email"], $_POST["phone"], $_POST["photo"]);
     $stmt->execute();
 }
 
@@ -60,6 +60,39 @@ function find_pet($search, $conn) {
     $stmt->bind_param("s", $search);
     $stmt->execute();
     return $stmt->get_result();
+}
+
+// Shows the pets associated with an owner
+function show_profile($conn) {
+            $owner = $_GET["owner_name"];
+            // Checks if the owner name input is in the db
+            $result = $conn->execute_query("SELECT owner_id, photo FROM newowners WHERE owner_name = ? LIMIT 1", [$owner]);
+
+            if ($result->num_rows == 1) {
+                $row = $result->fetch_assoc();
+                $ownerId = $row["owner_id"];
+
+                echo "<img src='" . $row["photo"] . "' height='100'>";
+                
+                // Finds the names of the pets that share an owner_id with the owner
+                $petResult = $conn->execute_query("SELECT name FROM newpets WHERE owner_id = ?", [$ownerId]);
+
+                if ($petResult->num_rows > 0) {
+                    echo "<br /> Pets belonging to you: <br />";
+
+                    // Loops through the pets to display all of the ones owned by one owner
+                    while ($petRow = $petResult->fetch_assoc()) {
+                        $petName = $petRow["name"];
+                        echo $petName . "<br />";
+                    }
+                // if there are 0 rows for the pets under the owner
+                } else {
+                    echo "No pets found.";
+                }
+            // if the input does not match an owner_name in the owners table
+            } else {
+                echo "That name isn't in the database yet. Make sure you entered it correctly and try again";
+            }
 }
 
 ?>

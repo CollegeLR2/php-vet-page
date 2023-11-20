@@ -13,6 +13,7 @@
     <h1>Add a new owner</h1>
     <!-- form to create details -->
     <form action="add-owner-action.php" method="post">
+        <p>Enter owner photo (link): <input type="url" name="photo" /></p>
         <p>Enter owner name: <input type="text" name="owner_name" /></p>
         <p>Enter owner email: <input type="text" name="email" /></p>
         <p>Enter owner phone #: <input type="text" name="phone" /></p>
