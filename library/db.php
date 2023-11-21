@@ -41,10 +41,11 @@ function add_owner($conn) {
 
 // changes the values of the data in the db
 function edit_pet($id, $conn) {
-    $query = "UPDATE newpets SET name=?, age=?, type=?, owner_id=? WHERE id=?";
+    $query = "UPDATE newpets SET name=?, age=?, type=?, owner_id=?, pet_photo=? WHERE id=?";
     // Prepares the query to prevent SQL injections 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sssis", $_POST["name"], $_POST["age"], $_POST["type"], $_POST["owner_id"], $_POST["id"]);
+    $stmt->bind_param("sssisi", $_POST["name"], $_POST["age"], $_POST["type"], 
+    $_POST["owner_id"], $_POST["pet_photo"], $_POST["id"]);
     $stmt->execute();
 }
 
